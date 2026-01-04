@@ -4,22 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Aman Restaurant</title>
 </head>
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
     body {
         color: white;
         margin: 0px;
         padding: 0px;
-        background: url('bgnew.jpg');
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600');
         background-size: cover;
         background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
         font-family: 'Times New Roman', Times, serif;
+        min-height: 100vh;
     }
 
     .left {
         display: inline-block;
-        border: 2px;
         position: absolute;
         left: 36px;
         top: 17px;
@@ -27,21 +35,20 @@
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         color: gold;
         font-weight: bold;
+        z-index: 100;
     }
 
     .mid {
         display: inline-block;
         position: absolute;
-        border: 2px;
-        width: 50%;
-        margin: 10px auto;
-        left: 600px;
-
+        width: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 20px;
     }
 
     .right {
         display: inline-block;
-        border: 0px;
         position: absolute;
         right: 34px;
         top: 15px;
@@ -61,94 +68,268 @@
         color: aliceblue;
         text-decoration: none;
         padding: 34px 23px;
+        transition: all 0.3s ease;
     }
 
     .navbar li a:hover {
         text-decoration: underline;
-        color: grey;
-    }
-
-    .left div {
-        text-align: left;
+        color: gold;
+        transform: scale(1.1);
     }
 
     .btn {
         margin: 1px 1px;
-        border-radius: 5px;
-        border-color: gold;
+        border-radius: 10px;
+        border: 2px solid gold;
         background-color: gold;
         color: white;
-        width: 99%;
+        width: 100%;
         height: 40px;
         font-size: 18px;
         font-family: 'Times New Roman', Times, serif;
-        font: bold;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: transparent;
+        color: gold;
+        transform: scale(1.05);
     }
 
     .container {
-        border: 0px solid;
-        margin: 50px 80px;
-        padding: 51px 0px;
-        width: 38%;
-        border-radius: 1px;
-        float: right;
-    }
-
-    .container img {
-        width: 85%;
+        position: absolute;
+        right: 80px;
+        top: 150px;
+        width: 400px;
         display: flex;
         justify-content: center;
         align-items: center;
-        animation: spinanimate 5s ease-in 0s infinite normal;
     }
-    @keyframes circle-motion{
-        transform:translate  
+
+    .container img {
+        width: 100%;
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+        animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+        0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-20px) rotate(5deg);
+        }
     }
 
     .meal {
-        display: block;
         position: absolute;
         top: 200px;
         left: 120px;
         font-size: 55px;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        line-height: 1.2;
     }
+
     .text {
-        display: block;
         position: absolute;
-        border: 10px;
         width: 45%;
-        padding: 1px;
-        top: 320px;
+        top: 340px;
         left: 120px;
-        font-size: 20px;
+        font-size: 18px;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        line-height: 1.6;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
     }
+
     .finish {
-        display: inline-block;
-        border: 0px;
         position: absolute;
-        left: 130px;
-        top: 450px;
-        width: 160px;
+        left: 120px;
+        top: 520px;
     }
-    .btn1{
-        border-color: gold;
-        border-radius: 5px;
+
+    .btn1 {
+        border: 2px solid gold;
+        border-radius: 10px;
         background-color: gold;
         color: white;
-        width: 140%;
+        width: 200px;
         height: 60px;
         font-size: 20px;
         font-family: 'Courier New', Courier, monospace;
         font-weight: bold;
-    } 
-    @keyframes spinanimate {
-        from{
-            transform: rotate(0deg);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn1:hover {
+        background-color: transparent;
+        color: gold;
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+
+    /* hamburger menu for mobile */
+    .menu-toggle {
+        display: none;
+        position: absolute;
+        right: 34px;
+        top: 25px;
+        flex-direction: column;
+        cursor: pointer;
+        z-index: 101;
+    }
+
+    .menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background-color: gold;
+        margin: 3px 0;
+        transition: 0.3s;
+    }
+
+    /* responsive for tablets and below */
+    @media screen and (max-width: 1024px) {
+        .container {
+            width: 350px;
+            right: 40px;
+            top: 120px;
         }
-        to{
-            transform: rotate(360deg);
+
+        .meal {
+            font-size: 45px;
+            left: 60px;
+            top: 180px;
+        }
+
+        .text {
+            width: 50%;
+            left: 60px;
+            top: 310px;
+            font-size: 16px;
+        }
+
+        .finish {
+            left: 60px;
+            top: 480px;
+        }
+    }
+
+    /* responsive for mobile phones */
+    @media screen and (max-width: 768px) {
+        .left {
+            left: 20px;
+            top: 20px;
+            font-size: 24px;
+        }
+
+        .mid {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 20px;
+            transform: translateX(0);
+        }
+
+        .mid.active {
+            display: block;
+        }
+
+        .navbar {
+            display: block;
+            text-align: center;
+        }
+
+        .navbar li {
+            display: block;
+            margin: 15px 0;
+        }
+
+        .navbar a {
+            padding: 15px 20px;
+            display: block;
+        }
+
+        .right {
+            display: none;
+        }
+
+        .menu-toggle {
+            display: flex;
+        }
+
+        .container {
+            position: relative;
+            width: 250px;
+            margin: 80px auto 30px auto;
+            right: auto;
+            top: auto;
+        }
+
+        .meal {
+            position: relative;
+            font-size: 35px;
+            left: 20px;
+            top: auto;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .text {
+            position: relative;
+            width: 90%;
+            left: 20px;
+            top: auto;
+            font-size: 16px;
+            margin: 20px;
+            text-align: justify;
+        }
+
+        .finish {
+            position: relative;
+            left: 0;
+            top: auto;
+            text-align: center;
+            margin: 30px 20px;
+        }
+
+        .btn1 {
+            width: 180px;
+            height: 55px;
+            font-size: 18px;
+        }
+    }
+
+    /* responsive for small mobile phones */
+    @media screen and (max-width: 480px) {
+        .left {
+            font-size: 20px;
+            left: 15px;
+        }
+
+        .meal {
+            font-size: 28px;
+            margin: 15px;
+        }
+
+        .text {
+            font-size: 14px;
+            margin: 15px;
+        }
+
+        .btn1 {
+            width: 160px;
+            height: 50px;
+            font-size: 16px;
+        }
+
+        .container {
+            width: 200px;
         }
     }
 </style>
@@ -156,24 +337,28 @@
 <body>
     <header class="header">
         <div class="left">
-            Aman Resturant
+            Aman Restaurant
         </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        <div class="mid">
+        <div class="mid" id="navMenu">
             <ul class="navbar">
                 <li><a href="#">HOME</a></li>
                 <li><a href="#">ABOUT</a></li>
                 <li><a href="#">SERVICE</a></li>
-                <li><a href="#">MINU</a></li>
+                <li><a href="#">MENU</a></li>
                 <li><a href="#">CONTACT</a></li>
             </ul>
         </div>
         <div class="right">
-            <button class="btn" :>BOOK A TABLE</button>
+            <button class="btn">BOOK A TABLE</button>
         </div>
     </header>
     <div class="container">
-        <img src="hero.png">
+        <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="Food">
     </div>
     <div class="meal">
         Enjoy Our<br>Delicious Meal
@@ -182,8 +367,15 @@
         Discover the perfect dining experience at our restaurant! Our user-friendly website lets you effortlessly book a table and explore our delicious menu. From appetizers to desserts, indulge in a variety of culinary delights crafted with passion. Join us for a memorable meal—reserve your table today and treat yourself!
     </div>
     <div class="finish">
-        <button class="btn1" :>BOOK A TABLE</button>
+        <button class="btn1">BOOK A TABLE</button>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 
 </html>
