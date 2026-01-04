@@ -111,15 +111,15 @@
     .container img {
         width: 100%;
         filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
-        animation: floating 3s ease-in-out infinite;
+        animation: spinanimate 5s ease-in 0s infinite normal;
     }
 
-    @keyframes floating {
-        0%, 100% {
-            transform: translateY(0px) rotate(0deg);
+    @keyframes spinanimate {
+        from {
+            transform: rotate(0deg);
         }
-        50% {
-            transform: translateY(-20px) rotate(5deg);
+        to {
+            transform: rotate(360deg);
         }
     }
 
@@ -379,4 +379,3 @@
 </body>
 
 </html>
-
